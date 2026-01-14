@@ -1,0 +1,1115 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #0e1117;
+  color: #f0f0f0;
+  line-height: 1.6;
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+h1 {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  color: #ffffff;
+}
+
+a {
+  color: #58a6ff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* ===== COIN CARD ===== */
+.coin-card {
+  background-color: #161b22;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  border-left: 4px solid transparent; /* Default: no colored border */
+}
+
+.coin-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+
+.coin-card.profit-border {
+  border-left-color: #10b981;
+}
+
+.coin-card.loss-border {
+  border-left-color: #ef4444;
+}
+
+.coin-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.coin-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.coin-header h2 {
+  font-size: 1.2rem;
+  margin: 0;
+  color: #ffffff;
+}
+
+.symbol {
+  font-size: 0.9rem;
+  color: #8b949e;
+  text-transform: uppercase;
+  margin-top: 0.25rem;
+}
+
+.positive {
+  color: #10b981;
+  font-weight: 600;
+}
+
+.negative {
+  color: #ef4444;
+  font-weight: 600;
+}
+
+
+.purchase-section {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #30363d;
+}
+
+.price-input {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.price-input-field {
+  width: 100%;
+  padding: 10px 12px;
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  color: #c9d1d9;
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+}
+
+.price-input-field:focus {
+  outline: none;
+  border-color: #58a6ff;
+  box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.1);
+}
+
+.price-input-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.save-btn, .cancel-btn {
+  flex: 1;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.save-btn {
+  background: #238636;
+  color: white;
+}
+
+.save-btn:hover {
+  background: #2ea043;
+}
+
+.save-btn:active {
+  background: #1f6f3a;
+}
+
+.cancel-btn {
+  background: #21262d;
+  color: #c9d1d9;
+  border: 1px solid #30363d;
+}
+
+.cancel-btn:hover {
+  background: #30363d;
+  border-color: #8b949e;
+}
+
+.add-price-btn {
+  width: 100%;
+  padding: 12px;
+  background: transparent;
+  color: #8b949e;
+  border: 2px dashed #30363d;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s;
+  font-size: 0.95rem;
+}
+
+.add-price-btn:hover {
+  background: rgba(88, 166, 255, 0.1);
+  color: #58a6ff;
+  border-color: #58a6ff;
+}
+
+.add-price-icon {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.add-price-text {
+  font-size: 0.95rem;
+}
+
+.purchase-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.purchase-details {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.purchase-label {
+  font-size: 0.85rem;
+  color: #8b949e;
+}
+
+.purchase-price {
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 1rem;
+}
+
+
+.pl-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+
+.pl-indicator.profit {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+}
+
+.pl-indicator.loss {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+}
+
+.edit-price-btn {
+  padding: 6px 14px;
+  background: transparent;
+  color: #8b949e;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.edit-price-btn:hover {
+  color: #58a6ff;
+  border-color: #58a6ff;
+  background: rgba(88, 166, 255, 0.1);
+}
+
+.coin-details-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.coin-details-link p {
+  margin: 8px 0;
+  color: #c9d1d9;
+}
+
+.coin-details-link:hover {
+  opacity: 0.9;
+}
+
+
+.top-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  background: #161b22;
+  padding: 1.5rem;
+  border-radius: 12px;
+}
+
+.top-controls .filter {
+  flex: 2;
+  min-width: 300px;
+}
+
+.top-controls .controls {
+  flex-shrink: 0;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.controls label {
+  font-weight: 600;
+  color: #c9d1d9;
+  font-size: 0.95rem;
+}
+
+.controls select {
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  background: #0d1117;
+  color: #c9d1d9;
+  border: 1px solid #30363d;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.controls select:hover {
+  border-color: #58a6ff;
+}
+
+.controls select:focus {
+  outline: none;
+  border-color: #58a6ff;
+  box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.1);
+}
+
+.filter {
+  width: 100%;
+}
+
+.filter input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #30363d;
+  background: #0d1117;
+  color: #c9d1d9;
+  font-size: 1rem;
+  transition: all 0.2s;
+}
+
+.filter input:focus {
+  outline: none;
+  border-color: #58a6ff;
+  box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.1);
+}
+
+.filter input::placeholder {
+  color: #8b949e;
+}
+
+
+.top-nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid #30363d;
+}
+
+.top-nav a {
+  color: #c9d1d9;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 0.5rem 0;
+  transition: color 0.2s;
+  position: relative;
+}
+
+.top-nav a:hover {
+  color: #58a6ff;
+}
+
+.top-nav a.active {
+  color: #58a6ff;
+}
+
+
+.about {
+  max-width: 700px;
+  margin: 0 auto;
+  background-color: #161b22;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.about h1 {
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  font-size: 2.2rem;
+}
+
+.about p {
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+  color: #c9d1d9;
+  font-size: 1.05rem;
+}
+
+
+.coin-details-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  text-align: center;
+  padding: 2.5rem;
+  background-color: #161b22;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  color: #f0f0f0; 
+}
+
+.coin-details-container a {
+  display: inline-block;
+  margin-bottom: 2rem;
+  text-decoration: none;
+  color: #58a6ff;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: color 0.3s;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  background: rgba(88, 166, 255, 0.1);
+}
+
+.coin-details-container a:hover {
+  color: #ffffff;
+  background: rgba(88, 166, 255, 0.2);
+}
+
+.coin-details-title {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+}
+
+.coin-details-image {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 2rem;
+  border-radius: 50%;
+  border: 3px solid #30363d;
+}
+
+.coin-details-info {
+  text-align: left;
+  background: #0d1117;
+  padding: 2rem;
+  border-radius: 12px;
+  margin: 2rem 0;
+}
+
+.coin-details-info h3,
+.coin-details-info h4 {
+  margin: 1rem 0;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #30363d;
+}
+
+.coin-details-info h3 {
+  font-size: 1.3rem;
+  color: #ffffff;
+}
+
+.coin-details-info h4 {
+  font-size: 1.1rem;
+  color: #c9d1d9;
+}
+
+.coin-details-links {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #30363d;
+}
+
+.coin-details-links a {
+  color: #58a6ff;
+  text-decoration: none;
+  margin: 0 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  background: rgba(88, 166, 255, 0.1);
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.coin-details-links a:hover {
+  background: rgba(88, 166, 255, 0.2);
+  text-decoration: none;
+}
+
+
+.error {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid #ef4444;
+  color: #ef4444;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+  font-weight: 500;
+}
+
+.loading {
+  text-align: center;
+  padding: 3rem;
+  color: #8b949e;
+  font-size: 1.1rem;
+}
+
+
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+  
+  .top-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+  
+  .top-controls .filter {
+    min-width: 100%;
+  }
+  
+  .controls {
+    justify-content: flex-start;
+    width: 100%;
+  }
+  
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .top-nav {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .coin-details-container {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+  
+  .coin-details-title {
+    font-size: 2rem;
+  }
+}
+
+
+.portfolio-icon-container {
+  position: relative;
+}
+
+.portfolio-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: #21262d;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  color: #c9d1d9;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.95rem;
+}
+
+.portfolio-button:hover {
+  background: #30363d;
+  border-color: #8b949e;
+}
+
+.portfolio-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.portfolio-badge {
+  background: #58a6ff;
+  color: white;
+  font-size: 0.75rem;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.portfolio-tooltip {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  margin-top: 8px;
+  width: 220px;
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  padding: 16px;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.portfolio-tooltip h3 {
+  font-size: 1rem;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+.portfolio-tooltip p {
+  font-size: 0.85rem;
+  color: #8b949e;
+  margin-bottom: 4px;
+}
+
+.tooltip-footer {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #30363d;
+}
+
+
+
+.coin-card.profit-border {
+  border-left-color: #10b981;
+  border-left-width: 4px;
+}
+
+.coin-card.loss-border {
+  border-left-color: #ef4444;
+  border-left-width: 4px;
+}
+
+
+.coin-card {
+  background-color: #161b22;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  border-left: 4px solid transparent; 
+}
+
+.coin-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+
+.coin-details {
+  margin-bottom: 10px;
+}
+
+.coin-details-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.coin-details-link p {
+  margin: 8px 0;
+  color: #c9d1d9;
+}
+
+.coin-details-link:hover {
+  opacity: 0.9;
+}
+
+
+.edit-price-btn {
+  padding: 6px 14px;
+  background: transparent;
+  color: #8b949e;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.edit-price-btn:hover {
+  color: #58a6ff;
+  border-color: #58a6ff;
+  background: rgba(88, 166, 255, 0.1);
+}
+
+
+
+
+.purchase-section {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #30363d;
+}
+
+.price-input h4 {
+  margin-bottom: 10px;
+  color: #c9d1d9;
+  font-size: 0.9rem;
+}
+
+
+.price-input-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+.save-btn, .cancel-btn, .delete-btn {
+  flex: 1;
+  min-width: 70px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.save-btn {
+  background: #238636;
+  color: white;
+}
+
+.save-btn:hover:not(:disabled) {
+  background: #2ea043;
+}
+
+.save-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.cancel-btn {
+  background: #21262d;
+  color: #c9d1d9;
+  border: 1px solid #30363d;
+}
+
+.cancel-btn:hover {
+  background: #30363d;
+  border-color: #8b949e;
+}
+
+.delete-btn {
+  background: #d92d20;
+  color: white;
+}
+
+.delete-btn:hover {
+  background: #ef4444;
+}
+
+
+.purchase-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.purchase-details {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.purchase-label {
+  font-size: 0.85rem;
+  color: #8b949e;
+}
+
+.purchase-price {
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 1rem;
+}
+
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.portfolio-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.portfolio-modal {
+  background: #161b22;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow: hidden;
+  border: 1px solid #30363d;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.portfolio-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid #30363d;
+}
+
+.portfolio-modal-header h2 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1.5rem;
+}
+
+.portfolio-modal-close {
+  background: transparent;
+  border: none;
+  color: #8b949e;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.portfolio-modal-close:hover {
+  background: #30363d;
+  color: #ffffff;
+}
+
+.portfolio-empty {
+  padding: 40px 24px;
+  text-align: center;
+  color: #8b949e;
+}
+
+.portfolio-modal-content {
+  padding: 24px;
+}
+
+.portfolio-summary {
+  color: #c9d1d9;
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+}
+
+.portfolio-summary strong {
+  color: #ffffff;
+}
+
+.portfolio-list {
+  max-height: 50vh;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+
+.portfolio-item {
+  padding: 12px 16px;
+  background: #0d1117;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  border: 1px solid #30363d;
+  transition: all 0.2s;
+}
+
+.portfolio-item:hover {
+  border-color: #58a6ff;
+  background: rgba(88, 166, 255, 0.05);
+}
+
+.portfolio-item-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.portfolio-coin-id {
+  color: #ffffff;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.portfolio-price {
+  color: #58a6ff;
+  font-weight: 600;
+}
+
+.portfolio-modal-footer {
+  padding-top: 16px;
+  border-top: 1px solid #30363d;
+  color: #8b949e;
+  font-size: 0.85rem;
+}
+
+
+.portfolio-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  backdrop-filter: blur(4px);
+}
+
+.portfolio-modal {
+  background: #161b22;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow: hidden;
+  border: 1px solid #30363d;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.portfolio-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  border-bottom: 1px solid #30363d;
+  background: rgba(13, 17, 23, 0.5);
+}
+
+.portfolio-modal-header h2 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1.5rem;
+}
+
+.portfolio-modal-close {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid #30363d;
+  color: #8b949e;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.portfolio-modal-close:hover {
+  background: #30363d;
+  color: #ffffff;
+  border-color: #8b949e;
+}
+
+.portfolio-empty {
+  padding: 48px 24px;
+  text-align: center;
+  color: #8b949e;
+}
+
+.portfolio-empty h3 {
+  color: #c9d1d9;
+  margin: 16px 0 8px 0;
+}
+
+.portfolio-modal-content {
+  padding: 24px;
+}
+
+.portfolio-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.portfolio-stat {
+  background: #0d1117;
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid #30363d;
+  text-align: center;
+}
+
+.stat-label {
+  display: block;
+  color: #8b949e;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.stat-value {
+  display: block;
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.stat-value.active {
+  color: #10b981;
+}
+
+.portfolio-list {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  border: 1px solid #30363d;
+}
+
+.portfolio-item {
+  padding: 16px;
+  background: #0d1117;
+  border-bottom: 1px solid #30363d;
+  transition: all 0.2s;
+}
+
+.portfolio-item:last-child {
+  border-bottom: none;
+}
+
+.portfolio-item:hover {
+  background: rgba(88, 166, 255, 0.05);
+}
+
+.portfolio-item-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.portfolio-coin-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.portfolio-coin-name {
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+.portfolio-coin-symbol {
+  color: #8b949e;
+  font-size: 0.85rem;
+}
+
+.portfolio-price-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.portfolio-price {
+  color: #58a6ff;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+
+.portfolio-date {
+  color: #8b949e;
+  font-size: 0.8rem;
+}
+
+.portfolio-modal-footer {
+  padding-top: 16px;
+  border-top: 1px solid #30363d;
+  color: #8b949e;
+  font-size: 0.85rem;
+  text-align: center;
+}
